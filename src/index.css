@@ -6,3 +6,8 @@
 body {
   margin: 0;
 }
+
+/* index.css */
+* {
+  box-sizing: border-box;
+}
