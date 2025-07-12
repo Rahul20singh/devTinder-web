@@ -12,8 +12,8 @@ const Body = () => {
   const userData = useSelector((store) => store.user);
 
   useEffect(() => {
-    if (!userData || Object.keys(userData).length === 0) {
-      const fetchUser = async () => {
+    const fetchUser = async () => {
+      if (!userData || Object.keys(userData).length === 0) {
         try {
           const userProfile = await axios.get(BASE_URL + "/profile", {
             withCredentials: true,
@@ -24,11 +24,12 @@ const Body = () => {
         } catch (error) {
           console.error("Failed to fetch user profile:", error);
         }
-      };
+      }
+    };
 
-      fetchUser();
-    }
-  }, [userData, dispatch]);
+    fetchUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // 🔁 Runs only once when Body mounts
 
   return (
     <div className="min-h-screen flex flex-col">
