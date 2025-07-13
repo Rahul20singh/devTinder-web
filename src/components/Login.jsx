@@ -14,8 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   let handleLogin = async function () {
     try {
-      console.log("kskakakakak");
-
+     
       let res = await axios.post(
         BASE_URL + "/login",
         {
@@ -25,10 +24,8 @@ const Login = () => {
         { withCredentials: true }
       );
 
-      console.log("here::::::::::::::::::::::::::::::::", res);
       dispatch(addUser(res.data.data));
       return navigate("/");
-      // console.log(res);
     } catch (error) {
       if (error.status === 500) {
         setError("Invalid credentials");
