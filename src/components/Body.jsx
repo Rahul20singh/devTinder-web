@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
@@ -10,6 +10,7 @@ import axios from "axios";
 const Body = () => {
   const dispatch = useDispatch();
   const userData = useSelector((store) => store.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -23,6 +24,7 @@ const Body = () => {
           }
         } catch (error) {
           console.error("Failed to fetch user profile:", error);
+          navigate("/login");
         }
       }
     };

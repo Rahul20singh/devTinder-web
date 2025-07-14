@@ -33,10 +33,11 @@ const Requests = () => {
           withCredentials: true,
         }
       );
+      console.log("aaaaaaaaaaaaaaa", allRequests);
       const data = allRequests.data.result.map((req) => {
         return {
           _id: req._id,
-          fromUserId: req.fromUserId,
+          toUserId: req.toUserId,
         };
       });
 
@@ -63,13 +64,13 @@ const Requests = () => {
         {requests &&
           requests.map((user) => (
             <div
-              key={user.fromUserId._id}
+              key={user.toUserId._id}
               className="card card-side bg-base-100 shadow-md"
             >
               <figure className="w-20 h-full overflow-hidden">
                 <img
                   src={
-                    user?.fromUserId?.photoUrl ||
+                    user?.toUserId?.photoUrl ||
                     "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
                   }
                   alt="User"
@@ -82,13 +83,13 @@ const Requests = () => {
                   {/* Text section */}
                   <div className="flex flex-col justify-center gap-1">
                     <h5 className="font-semibold text-sm">
-                      {user.fromUserId.firstName} {user.fromUserId.lastName}
+                      {user.toUserId.firstName} {user.toUserId.lastName}
                     </h5>
                     <p className="text-xs text-gray-700">
-                      {user.fromUserId.age} • {user.fromUserId.gender}
+                      {user.toUserId.age} • {user.toUserId.gender}
                     </p>
                     <p className="text-xs text-gray-600 line-clamp-1">
-                      {user.fromUserId.about || "No bio provided."}
+                      {user.toUserId.about || "No bio provided."}
                     </p>
                   </div>
 

@@ -24,6 +24,7 @@ const EditProfile = () => {
   // Fetch user on mount if not already available
   useEffect(() => {
     const fetchUser = async () => {
+      console.log("got me here:::::::::::::::::::::::::::");
       try {
         const response = await axios.get(BASE_URL + "/profile", {
           withCredentials: true,
@@ -46,7 +47,7 @@ const EditProfile = () => {
         console.error("Failed to fetch user:", error);
       }
     };
-
+    console.log("johnnnnnnnnnnnnnnnnnnnnnnnnnnn");
     if (!user) {
       fetchUser();
     } else {
