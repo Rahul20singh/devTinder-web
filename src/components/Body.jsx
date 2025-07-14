@@ -23,7 +23,6 @@ const Body = () => {
             dispatch(addUser(userProfile.data));
           }
         } catch (error) {
-          console.error("Failed to fetch user profile:", error);
           navigate("/login");
         }
       }
